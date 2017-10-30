@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "image": "http://www.essentialkids.com.au/content/dam/images/3/7/3/q/2/image.related.articleLeadwide.620x349.373es.png/1398231235147.jpg",
+    "name": "Paket Mcd Jumbo",
+    "price": "57000",
+    "time": 0,
+    "description": "Menu Paket Jumbo Ayam Buah Dan Minuman Dengan Harga Murah Cocok Untuk Dua Orang",
+    "favorite": 1,
+    "categori_id": 2,
+    "created_at": "2017-10-26 13:40:28",
+    "updated_at": "2017-10-26 13:40:28"
+  },
+  {
+    "id": 2,
+    "image": "https://img-global.cpcdn.com/003_recipes/c4fd89450db8932c/751x532cq70/photo.jpg",
+    "name": "Soto Ayam Madura",
+    "price": "18000",
+    "time": 15,
+    "description": "Soto Madura Kaya Rasa Dengan Telor Dan Ayam Gurih Bercampur Dengan Nasi",
+    "favorite": 0,
+    "categori_id": 2,
+    "created_at": "2017-10-26 13:47:39",
+    "updated_at": "2017-10-26 13:47:39"
+  },
+  {
+    "id": 3,
+    "image": "http://resepcaramemasak.info/wp-content/uploads/2014/02/Resep-Sate-Kambing-Bumbu-Kecap-Empuk.jpg",
+    "name": "Sate Kambing Muda",
+    "price": "",
+    "time": 30,
+    "description": "Sate Kambing Muda Dengan Olahan Yang Sempurna Sehingga Menghasilkan Daging Yang Empuk Dan Enak",
+    "favorite": 1,
+    "categori_id": 2,
+    "created_at": "2017-10-26 13:51:28",
+    "updated_at": "2017-10-26 13:51:28"
+  }
+]

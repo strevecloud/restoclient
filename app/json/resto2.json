@@ -1,0 +1,14 @@
+[
+ {
+    "id": 2,
+    "image": "https://img-global.cpcdn.com/003_recipes/c4fd89450db8932c/751x532cq70/photo.jpg",
+    "name": "Soto Ayam Madura",
+    "price": "18000",
+    "time": 15,
+    "description": "Soto Madura Kaya Rasa Dengan Telor Dan Ayam Gurih Bercampur Dengan Nasi",
+    "favorite": 0,
+    "categori_id": 2,
+    "created_at": "2017-10-26 13:47:39",
+    "updated_at": "2017-10-26 13:47:39"
+  }
+]

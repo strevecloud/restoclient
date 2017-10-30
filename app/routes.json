@@ -1,0 +1,38 @@
+[
+  {
+    "path": "/category/",
+    "component": "category.vue"
+  },
+  {
+    "path": "/categorydetail/",
+    "component": "categorydetail.vue"
+  },
+  {
+    "path": "/categorydetail/:id/:name/",
+    "component": "categorydetail.vue"
+  },
+  {
+    "path": "/detail/",
+    "component": "detail.vue"
+  },
+  {
+    "path": "/detail/:id/:name/",
+    "component": "detail.vue"
+  },
+  {
+    "path": "/home/",
+    "component": "home.vue"
+  },
+  {
+    "path": "/inprogress/",
+    "component": "inprogress.vue"
+  },
+  {
+    "path": "/menumakanan/",
+    "component": "menumakanan.vue"
+  },
+  {
+    "path": "/paymentdetail/",
+    "component": "paymentdetail.vue"
+  }
+]
