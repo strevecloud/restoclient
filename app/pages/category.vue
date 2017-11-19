@@ -50,13 +50,13 @@ export default {
       }
     },
     created: function () {
-      let url = CONFIG.URL + 'category'
+      let url = CONFIG.URL + 'menu'
       axios.get(url)
         .then(response => {
           // JSON responses are automatically parsed.
           let res = response.data
-          this.datas = res
-          // console.log(res)
+          this.datas = res.data
+          //console.log(res.data)
         })
         .catch(e => {
           console.log('error')
@@ -68,7 +68,7 @@ export default {
         return '/categorydetail/' + item.id + '/' + item.name
       },
       alertclickfalse: function () {
-        return this.data.id
+        return this.datas.id
       },
       formatPrice (value) {
         let val = (value / 1).toFixed(2).replace('.', ',')

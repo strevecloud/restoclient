@@ -1,12 +1,14 @@
 <template>
 <f7-page>
      <f7-navbar :title="title" link="/" back-link="Back" sliding/>
-    <div class="content-block-title">Detail Menu</div>
+    <!-- <div class="content-block-title">Detail Menu</div> -->
     <div class="card demo-card-header-pic">
-        <div :style="{ 'background-image': 'url(' + imagefood + ')' }" valign="bottom" class="card-header color-white no-border">{{ namefood }}</div>
+        <div v-if="imagefood" :style="{ 'background-image': 'url(' + imagefood + ')' }" valign="bottom" class="card-header color-white no-border"></div>
+
+        <div v-if="!imagefood" valign="bottom" class="card-header color-white no-border" style="background-image: url('../images/no-image.svg');"></div>
         <div class="card-content">
             <div class="card-content-inner">
-                <p class="color-gray">{{ namefood}}</p>
+                <p class="color-black">{{ namefood}}</p>
                 <p class="color-gray">Harga : {{ formatPrice(pricefood)}}</p>
                 <p class="color-gray">Lama Pembuatan : {{ timefood }} Menit</p>
                 <p>{{ descriptionfood }}</p>
@@ -14,11 +16,32 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="#" class="link">Favorite</a>
-            <a href="/inprogress" class="link">Buy</a>
+            <div class="buynow">
+              <i class="fa fa-minus-square fa-lg" @click="kurang" aria-hidden="true"></i>
+              <input type="number" name="qty" class="inputinline" :value="counter" readonly>
+              <i class="fa fa-plus-square fa-lg" @click="tambah" aria-hidden="true"></i>
+            </div>
+            <a href="/inprogress" class="link">Order</a>
 
         </div>
+        <form class="list-block inputs-list" v-if="isMorethanZero">
+        <ul>
+        <li>
+        <!-- <div class="card-footer"> -->
+         <div class="item-content">
+            <div class="item-inner">
+               <div class="item-input item-input-field">
+                  <textarea type="text" placeholder="Catatan" class="resizable"></textarea>
+               </div>
+            </div>
+         </div>
+      <!-- </div> -->
+    </li>
+  </ul>
+</form>
+
     </div>
+
 </f7-page>
 </template>
 
@@ -28,6 +51,22 @@
     background-size: cover;
     background-position: center;
   }
+  .inputinline{
+    width: 40px;
+    height: 16px;
+    margin-left: 1px;
+    margin-right: 1px;
+    /*margin-bottom: 3px;*/
+    text-align: center;
+  }
+.fa-minus-square:before {
+    content: "\F146";
+    font-size: 30px;
+}
+.fa-plus-square:before {
+    content: "\F0FE";
+    font-size: 30px;
+}
 </style>
 <script type="text/javascript">
   import axios from 'axios'
@@ -41,7 +80,9 @@ export default {
         descriptionfood: '',
         imagefood: '',
         pricefood: '',
-        timefood: ''
+        timefood: '',
+        counter: 0,
+        isMorethanZero: false
       }
     },
     created: function () {
@@ -49,20 +90,20 @@ export default {
       this.title = this.$route.params.name
       // console.log(routeparam)
       // let urldetail = '../json/resto' + routeparam + '.json'
-      let url = CONFIG.URL + 'menu/'
+      let url = CONFIG.URL + 'item/'
       let urldetail = url + routeparam
       axios.get(urldetail)
         .then(response => {
           // JSON responses are automatically parsed.
-          let res = response.data
-          this.details = res
+          let res = response.data.data[0]
+          this.details = res.data
           this.title = res.name
           this.namefood = res.name
           this.descriptionfood = res.description
           this.imagefood = res.image
           this.pricefood = res.price
           this.timefood = res.time
-          console.log(urldetail)
+          // console.log(pricefood)
         })
         .catch(e => {
           alert(e)
@@ -71,8 +112,24 @@ export default {
     },
     methods: {
       formatPrice (value) {
-        let val = (value / 1).toFixed(2).replace('.', ',')
+        let intHarga = parseInt(value)
+        let val = (intHarga / 1).toFixed(2).replace('.', ',')
         return 'Rp ' + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+      },
+      tambah: function () {
+        this.counter += 1
+        this.isMorethanZero = true
+      },
+      kurang: function () {
+        if (this.counter === 0) {
+          this.isMorethanZero = false
+          this.counter = 0
+        } else {
+          this.counter -= 1
+          if (this.counter === 0) {
+            this.isMorethanZero = false
+          }
+        }
       }
     }
 }

@@ -88,19 +88,13 @@
           console.log('error')
         })
     },
-    mounted: function () {
-      document.addEventListener('backbutton', onBackKeyDown, false)
-
-      function onBackKeyDown (e) {
-        e.preventDefault()
-        alert('Back Button is Pressed!')
-        window.history.back()
-      }
-    },
     methods: {
       linked: function (item) {
         // window.f7.alert(item.id);
         return '/detail/' + item.id + '/' + item.name
+      },
+      backto: function () {
+        this.$f7.views.main.router.back()
       },
       alertclickfalse: function () {
         return this.data.id

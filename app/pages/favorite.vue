@@ -1,28 +1,13 @@
 <template>
   <f7-page>
-  	<f7-navbar :title="title" link="/" back-link="Back" sliding/>
-
-   <!--  <f7-searchbar
-    cancel-link="Cancel"
-    search-list="#search-list"
-    placeholder="Cari Menu"
-    :clear-button="true"
-    @searchbar:search="onSearch"
-    @searchbar:enable="onEnable"
-    @searchbar:disable="onDisable"
-    @searchbar:clear="onClear">
-  </f7-searchbar>
-  <f7-list class="searchbar-not-found">
-    <f7-list-item title="Pencarian Tidak Ditemukan"></f7-list-item>
-  </f7-list> -->
-<f7-list class="searchbar-found" id="search-list">
+  	<f7-navbar title="Favorite" link="/" back-link="Back" sliding/>
     <div class="list-block media-list" v-for="item in data">
     <ul>
         <li>
             <div class="item-content">
                 <div class="item-media">
+                    <img v-if="item.image" :src="item.image" width="70">
                     <img v-if="!item.image" src="../images/no-image.svg" width="90">
-                    <img v-if="item.image" :src="item.image" width="90">
                 </div>
                 <div class="item-inner">
                     <div class="item-title-row">
@@ -36,7 +21,6 @@
         </li>
     </ul>
 </div>  
-</f7-list>
   </f7-page>
 </template>
 
@@ -61,7 +45,6 @@
 .list-block.media-list{
 	margin: 5px;
 }
-
 </style>
 <script>
   import axios from 'axios'
@@ -70,24 +53,20 @@ export default {
     data: function () {
       return {
         data: [],
-        title: '',
-        items: (function () {
-          var it = []
-          for (var i = 0; i < 100; i++) it.push(i + 1)
-          return it
-        })()
+        title: ''
       }
     },
     created: function () {
-      let routeparam = this.$route.params.id
-      this.title = this.$route.params.name
-      let url = CONFIG.URL + 'menu/'
-      let urldetail = url + routeparam
-      axios.get(urldetail)
+      // let routeparam = this.$route.params.id
+      // this.title = this.$route.params.name
+      let url = CONFIG.URL + 'favorite'
+      // let urldetail = url + routeparam
+      axios.get(url)
         .then(response => {
           // JSON responses are automatically parsed.
-          let res = response.data
-          this.data = res.data
+          let res = response.data.data
+          this.data = res
+          // console.log(res)
         })
         .catch(e => {
           console.log('error')
@@ -104,19 +83,6 @@ export default {
       formatPrice (value) {
         let val = (value / 1).toFixed(2).replace('.', ',')
         return 'Rp ' + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-      },
-      onSearch: function (query, found) {
-        console.log('search', query)
-        console.log(found)
-      },
-      onClear: function (event) {
-        console.log('clear')
-      },
-      onEnable: function (event) {
-        console.log('enable')
-      },
-      onDisable: function (event) {
-        console.log('disable')
       }
     }
   }

@@ -20,6 +20,14 @@
     "component": "detail.vue"
   },
   {
+    "path": "/favorite/",
+    "component": "favorite.vue"
+  },
+  {
+    "path": "/feedback/",
+    "component": "feedback.vue"
+  },
+  {
     "path": "/home/",
     "component": "home.vue"
   },
@@ -32,7 +40,15 @@
     "component": "menumakanan.vue"
   },
   {
+    "path": "/myorder/",
+    "component": "myorder.vue"
+  },
+  {
     "path": "/paymentdetail/",
     "component": "paymentdetail.vue"
+  },
+  {
+    "path": "/voucher/",
+    "component": "voucher.vue"
   }
 ]
