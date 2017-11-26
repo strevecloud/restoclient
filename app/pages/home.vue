@@ -1,6 +1,10 @@
 <template>
   <f7-page v-if="cekopen==0">
-  <f7-navbar :title="$root.config.title" :dynamic-navbar="true" main/>
+  <f7-navbar :title="$root.config.title" :dynamic-navbar="true" main>
+  <f7-nav-right>
+    <f7-link icon="icon-bars" open-panel="right"></f7-link>
+  </f7-nav-right>
+</f7-navbar>
     <!-- <f7-block-title>Welcome</f7-block-title> -->
     <div class="item-inner">
       <img src="../images/promo.jpg" width="100%" style="padding-top:10px;">
@@ -10,7 +14,7 @@
         <a href="/menumakanan">
     		<div class="card">
 			  <div class="card-content">
-			    <div class="card-content-inner">
+			    <div class="card-content-inner menu">
 			    	<img src="../images/menures.svg">
 			    </div>
 			  </div>
@@ -22,9 +26,9 @@
         <a href="/category" style="color:black;font-weight: bold">
     		<div class="card">
 			  <div class="card-content">
-			    <div class="card-content-inner">
+			    <div class="card-content-inner menu">
 			    	<img src="../images/menu_64x64.png">
-            <br><h4>Menu</h4>
+            <br><h4 class="margin-auto">Menu</h4>
 			    </div>
 			  </div>
 			  <!-- <div class="card-footer">Menu Category</div> -->
@@ -35,9 +39,9 @@
     		<div class="card">
 			  <div class="card-content">
 			  	<a href="/paymentdetail" style="color:black;font-weight: bold">
-			    <div class="card-content-inner">
+			    <div class="card-content-inner menu">
 			    	<img src="../images/billing_64x64.png">
-            <br><h4>Biling</h4>
+            <br><h4 class="margin-auto">Biling</h4>
 			    </div>
 			    </a>
 			  </div>
@@ -47,7 +51,7 @@
     	<!-- <div class="col-50 tablet-25">
     		<div class="card">
 			  <div class="card-content">
-			    <div class="card-content-inner">
+			    <div class="card-content-inner menu">
 			    	<img src="../images/chef.svg">
 			    </div>
 			  </div>
@@ -60,9 +64,9 @@
         <a href="/favorite" style="color:black;font-weight: bold">
     		<div class="card">
 			  <div class="card-content">
-			    <div class="card-content-inner">
+			    <div class="card-content-inner menu">
 			    	<img src="../images/favorite_64x64.png">
-            <br><h4>Favorite</h4>
+            <br><h4 class="margin-auto">Favorite</h4>
 			    </div>
 			  </div>
 			  <!-- <div class="card-footer">Favorite</div> -->
@@ -73,9 +77,9 @@
         <a href="/feedback" style="color:black;font-weight: bold">
     		<div class="card">
 			  <div class="card-content">
-			    <div class="card-content-inner">
+			    <div class="card-content-inner menu">
 			    	<img src="../images/feedback_64x64.png">
-            <br><h4>Feedback</h4>
+            <br><h4 class="margin-auto">Feedback</h4>
 			    </div>
 			  </div>
 			  <!-- <div class="card-footer">Feedback</div> -->
@@ -86,9 +90,9 @@
         <a href="/myorder" style="color:black;font-weight: bold">
     		<div class="card">
 			  <div class="card-content">
-			    <div class="card-content-inner">
+			    <div class="card-content-inner menu">
 			    	<img src="../images/order_64x64.png">
-            <br><h4>My Order</h4>
+            <br><h4 class="margin-auto">My Order</h4>
 			    </div>
 			  </div>
 			  <!-- <div class="card-footer">Proggress</div> -->
@@ -99,9 +103,9 @@
         <a href="/voucher" style="color:black;font-weight: bold">
     		<div class="card">
 			  <div class="card-content">
-			    <div class="card-content-inner">
+			    <div class="card-content-inner menu">
 			    	<img src="../images/voucher_64x64.png">
-            <br><h4>Voucher</h4>
+            <br><h4 class="margin-auto">Voucher</h4>
 			    </div>
 			  </div>
 			  <!-- <div class="card-footer">Done</div> -->
@@ -176,9 +180,8 @@ a{
  // import axios from 'axios'
  import * as CONFIG from '../config'
  // import * as qwest from 'qwest'
- var Vue = require('vue')
+var Vue = require('vue')
 var VueResource = require('vue-resource')
-
 Vue.use(VueResource)
 export default {
    data () {
@@ -191,7 +194,6 @@ export default {
    },
    created: function () {
      this.cekopen = localStorage.getItem('cekopen')
-     // console.log(this.cekopen)
    },
    methods: {
      login: function () {

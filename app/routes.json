@@ -12,12 +12,20 @@
     "component": "categorydetail.vue"
   },
   {
+    "path": "/categorynew/",
+    "component": "categorynew.vue"
+  },
+  {
     "path": "/detail/",
     "component": "detail.vue"
   },
   {
     "path": "/detail/:id/:name/",
     "component": "detail.vue"
+  },
+  {
+    "path": "/detailmenu/",
+    "component": "detailmenu.vue"
   },
   {
     "path": "/favorite/",
@@ -38,6 +46,10 @@
   {
     "path": "/menumakanan/",
     "component": "menumakanan.vue"
+  },
+  {
+    "path": "/menusquare/",
+    "component": "menusquare.vue"
   },
   {
     "path": "/myorder/",

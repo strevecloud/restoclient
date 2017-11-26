@@ -19,8 +19,12 @@
   "limitApplicationHeight": 570,
   "limitedSizeBodyBackgroundColor": "#333333",
   "showPhoneFrameOnDesktop": true,
-  "phoneFrameBodyBackgroundColor": "#fafafa",
-  "framework7parameters": {},
+  "phoneFrameBodyBackgroundColor": "#e91e63",
+  "framework7parameters": {
+    "swipePanel": "left",
+    "pushState": true,
+    "animateNavBackIcon": true
+  },
   "materialSubnavbarFix": true,
   "restoreHistory": true,
   "restoreComponentData": false,

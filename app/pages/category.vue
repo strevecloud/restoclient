@@ -42,6 +42,7 @@ export default {
     data: function () {
       return {
         datas: [],
+        ready: false,
         items: (function () {
           var it = []
           for (var i = 0; i < 100; i++) it.push(i + 1)
@@ -50,13 +51,17 @@ export default {
       }
     },
     created: function () {
+      let myApp = this.$f7
+      myApp.showIndicator()
       let url = CONFIG.URL + 'menu'
       axios.get(url)
         .then(response => {
-          // JSON responses are automatically parsed.
           let res = response.data
           this.datas = res.data
-          //console.log(res.data)
+          this.ready = true
+          if (this.ready) {
+            myApp.hideIndicator()
+          }
         })
         .catch(e => {
           console.log('error')

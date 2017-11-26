@@ -71,6 +71,7 @@ export default {
       return {
         data: [],
         title: '',
+        ready: false,
         items: (function () {
           var it = []
           for (var i = 0; i < 100; i++) it.push(i + 1)
@@ -83,11 +84,17 @@ export default {
       this.title = this.$route.params.name
       let url = CONFIG.URL + 'menu/'
       let urldetail = url + routeparam
+      let myApp = this.$f7
+      myApp.showIndicator()
       axios.get(urldetail)
         .then(response => {
           // JSON responses are automatically parsed.
           let res = response.data
           this.data = res.data
+          this.ready = true
+          if (this.ready) {
+            myApp.hideIndicator()
+          }
         })
         .catch(e => {
           console.log('error')

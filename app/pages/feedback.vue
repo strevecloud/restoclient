@@ -34,10 +34,10 @@
          </div>
       </li>
       <li>
-         <div class="item-content">
+         <div class="item-content gray">
             <div class="item-inner">
                <div class="item-input">
-                 <a href="#" @click="sendfeedback" class="button button-fill button-raised">Send</a>
+                 <a href="#" @click="sendfeedback" class="button button-fill button-raised pink">Send</a>
                </div>
             </div>
          </div>
@@ -65,7 +65,7 @@
         formData.append('feedback_name', this.feedback_name)
         formData.append('feedback_description', this.feedback_description)
         axios.post(url, formData).then((response) => {
-          //console.log(response)
+          // console.log(response)
           window.f7.alert('Thank You Your Feedback Has Been Send')
           this.feedback_name = ''
           this.feedback_description = ''

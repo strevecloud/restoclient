@@ -53,13 +53,16 @@ export default {
     data: function () {
       return {
         data: [],
-        title: ''
+        title: '',
+        ready: false
       }
     },
     created: function () {
       // let routeparam = this.$route.params.id
       // this.title = this.$route.params.name
       let url = CONFIG.URL + 'favorite'
+      let myApp = this.$f7
+      myApp.showIndicator()
       // let urldetail = url + routeparam
       axios.get(url)
         .then(response => {
@@ -67,6 +70,10 @@ export default {
           let res = response.data.data
           this.data = res
           // console.log(res)
+          this.ready = true
+          if (this.ready) {
+            myApp.hideIndicator()
+          }
         })
         .catch(e => {
           console.log('error')

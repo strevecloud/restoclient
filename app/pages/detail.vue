@@ -2,7 +2,7 @@
 <f7-page>
      <f7-navbar :title="title" link="/" back-link="Back" sliding/>
     <!-- <div class="content-block-title">Detail Menu</div> -->
-    <div class="card demo-card-header-pic">
+    <div v-if="ready" class="card demo-card-header-pic">
         <div v-if="imagefood" :style="{ 'background-image': 'url(' + imagefood + ')' }" valign="bottom" class="card-header color-white no-border"></div>
 
         <div v-if="!imagefood" valign="bottom" class="card-header color-white no-border" style="background-image: url('../images/no-image.svg');"></div>
@@ -82,6 +82,7 @@ export default {
         pricefood: '',
         timefood: '',
         counter: 0,
+        ready: false,
         isMorethanZero: false
       }
     },
@@ -92,6 +93,8 @@ export default {
       // let urldetail = '../json/resto' + routeparam + '.json'
       let url = CONFIG.URL + 'item/'
       let urldetail = url + routeparam
+      let myApp = this.$f7
+      myApp.showIndicator()
       axios.get(urldetail)
         .then(response => {
           // JSON responses are automatically parsed.
@@ -103,6 +106,10 @@ export default {
           this.imagefood = res.image
           this.pricefood = res.price
           this.timefood = res.time
+          this.ready = true
+          if (this.ready) {
+            myApp.hideIndicator()
+          }
           // console.log(pricefood)
         })
         .catch(e => {

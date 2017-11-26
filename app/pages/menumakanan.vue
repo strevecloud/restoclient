@@ -58,7 +58,7 @@
     height: 25px;
 }
 .list-block.media-list{
-	margin: 5px;
+	margin: 10px;
 }
 </style>
 <script>

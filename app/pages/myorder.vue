@@ -4,6 +4,7 @@
 <div class="content-block-title">Inprogress</div>
 <div class="list-block">
   <ul>
+    <Countdown name="Mie Ayam" status="status" deadline="2017-11-27 18:13:00"></Countdown>
     <Countdown name="Mie Ayam" status="status" deadline="2017-11-18 18:13:00"></Countdown>
   </ul>
 </div>

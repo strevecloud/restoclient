@@ -1,7 +1,8 @@
 <template>
 	<f7-page>
 	<f7-navbar title="Voucher" link="/" back-link="Back" sliding/>
-	<form v-if="codeVoucher==''" id="my-form" class="list-block">
+	<div v-if="ready">
+	<form id="my-form" class="list-block" v-if="codeVoucher==''||codeVoucher==null">
    <ul>
       <li>
          <div class="item-content">
@@ -29,13 +30,14 @@
     <div class="list-block">
       <ul>
         <li class="item-content">
-          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-media"><i class="f7-icons">card</i></div>
           <div class="item-inner">
-            <div class="item-title">A01</div>
+            <div class="item-title">{{ codeVoucher }}</div>
             <!-- <div class="item-after">Label</div> -->
           </div>
         </li>
       </ul>
+    </div>
     </div>
     </div>
 	</f7-page>
@@ -47,14 +49,39 @@
     data: function () {
       return {
         voucher: null,
-        codeVoucher:null
+        codeVoucher: null,
+        ready: false
       }
     },
-    created:function()
-    {
-      this.getVoucher
+    created: function () {
+      this.getVoucher()
     },
     methods: {
+      getVoucher: function () {
+        let a = null
+        let userid = localStorage.getItem('userid')
+        let url = CONFIG.URL + 'voucher/' + userid
+        let myApp = this.$f7
+        myApp.showIndicator()
+        console.log(this.ready)
+        axios.get(url)
+          .then(response => {
+            let res = response.data
+            this.codeVoucher = res.data
+            a = res.data
+            this.ready = true
+            if (this.ready) {
+              myApp.hideIndicator()
+            }
+            console.log(this.codeVoucher)
+          })
+          .catch(e => {
+            console.log('error')
+          })
+        console.log(this.ready)
+  
+        return a
+      },
       sendvoucher: function () {
         let url = CONFIG.URL + 'voucher'
         let userid = localStorage.getItem('userid')
@@ -71,21 +98,6 @@
           })
       }
     },
-    computed:{
-    	getVoucher()
-    	{
-    	let userid = localStorage.getItem('userid')
-      	let url = CONFIG.URL + 'voucher/'+userid;
-      	axios.get(url)
-        .then(response => {
-          let res = response.data
-          this.codeVoucher = res.data
-          // console.log(this.codeVoucher)
-        })
-        .catch(e => {
-          console.log('error')
-        })
-    	}
-    }
+    computed: {}
   }
 </script>
