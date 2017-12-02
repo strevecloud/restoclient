@@ -1,6 +1,6 @@
 <template>
 	<f7-page>
-		<f7-navbar title="Menu" link="/" back-link="Back" sliding/>
+		<f7-navbar title="Category" link="/" back-link="Back" sliding/>
 		 <div class="content-block rectangle">
 		    <div class="row menu-category">
 		      <div class="col-100 image-category">

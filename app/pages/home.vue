@@ -6,8 +6,8 @@
   </f7-nav-right>
 </f7-navbar>
     <!-- <f7-block-title>Welcome</f7-block-title> -->
-    <div class="item-inner">
-      <img src="../images/promo.jpg" width="100%" style="padding-top:10px;">
+    <div class="item-inner home">
+      <img src="../images/promo.jpg" width="100%" style="padding-top:5px;">
     </div>
     <div class="row">
 <!--     	<div class="col-50 tablet-25">

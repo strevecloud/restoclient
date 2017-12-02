@@ -35,6 +35,38 @@
 		    </div>
 		  </div>
 		</div>
+	  <div class="picker-modal">
+	    <div class="toolbar">
+	      <div class="toolbar-inner">
+	        <div class="left"></div>
+	        <div class="right button"><a href="#" class="close-picker button color-white border-white">Done</a></div>
+	      </div>
+	    </div>
+	    <div class="picker-modal-inner">
+	    	<div class="list-block">
+		      <ul>
+		        <li>
+		          <div class="item-content">
+		          	<span class="item-inner auto">
+            		<a href="#" @click="tambah" class="disable-animation-button"><i class="f7-icons">add_round</i></a>
+            		<input type="text" class="qty" :value="counter" readonly>
+            		<a href="#" @click="kurang" class="disable-animation-button"><i class="f7-icons">delete_round</i></a>
+            		</span>
+		          </div>
+		        </li>
+		        <li>
+			      <div class="item-content">
+			        <div class="item-inner">
+			          <span class="inline-block">
+			            <textarea placeholder="Catatan" cols="100%"></textarea>
+			          </span>
+			        </div>
+			      </div>
+			    </li>
+		    </ul>
+			</div>
+	    </div>
+	  </div>
 	</f7-page>
 </template>
 <style type="text/css">
@@ -68,20 +100,74 @@
   	text-align: left;
   	margin: 5px 0 5px 0;
   }
+  .toolbar-inner{
+  	background: #CC0D52 !important;
+  }
+  .picker-modal{
+  	height: 160px !important;
+  	/*background-color: #F5F5F5!important;*/
+  }
+  a.close-picker.button.color-white.border-white{
+  	border-color: white;
+    border: 1px solid;
+  }
+  .right.button{
+  	margin-right: 5px;
+  }
+  input.qty {
+    border: 1px solid black !important;
+    height: 28px !important;
+    width: 48px !important;
+    text-align: center;
+}
+.item-inner.auto{
+	width: unset !important;
+	/*position: absolute !important;*/
+    margin: auto !important;
+    /*left: 26%;*/
+}
+span.inline-block {
+    display: inherit;
+}
+.disable-animation-button{
+  margin-left: 20px;
+  margin-right: 20px;
+}
 </style>
 <script type="text/javascript">
   export default {
     data: function () {
       return {
-        data: []
+        data: [],
+        counter: 0,
+        isMorethanZero: false
       }
+    },
+    created: function () {
+      let myApp = this.$f7
+      this.$$(document).on('page:back', function (e) {
+        myApp.closeModal('.picker-modal')
+      })
     },
     methods: {
       buy: function () {
         let myApp = this.$f7
-        myApp.prompt('Jumlah?', function (value) {
-          myApp.alert('Your name is "' + value + '". You clicked Ok button')
-        })
+        myApp.pickerModal('.picker-modal')
+      },
+      tambah: function () {
+        this.counter += 1
+        this.isMorethanZero = true
+      },
+      kurang: function () {
+        if (this.counter === 0) {
+          this.isMorethanZero = false
+          this.counter = 0
+        } else {
+          this.counter -= 1
+          if (this.counter === 0) {
+            this.isMorethanZero = false
+          }
+        }
       }
     }
   }

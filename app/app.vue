@@ -20,15 +20,23 @@
     <div class="list-block">
       <ul>
         <li>
-          <a @click="closepanel" href="/menusquare" class="item-link item-content gray">
+          <a @click="closepanel" href="/menusquare" class="item-content gray">
           <div class="item-media"><i class="f7-icons">menu</i></div>
           <div class="item-inner">
-            <div class="item-title">Menu</div>
+            <div class="item-title">Menu Square</div>
           </div>
         </a>
         </li>
         <li>
-          <a @click="closepanel" href="/categorynew" class="item-link item-content gray">
+          <a @click="closepanel" href="/listmenu" class="item-content gray">
+          <div class="item-media"><i class="f7-icons">menu</i></div>
+          <div class="item-inner">
+            <div class="item-title">Menu List</div>
+          </div>
+        </a>
+        </li>
+        <li>
+          <a @click="closepanel" href="/categorynew" class="item-content gray">
           <div class="item-media"><i class="f7-icons">data</i></div>
           <div class="item-inner">
             <div class="item-title">Category</div>
@@ -36,7 +44,15 @@
           </a>
         </li>
         <li>
-          <a @click="closepanel" href="/feedback" class="item-link item-content gray">
+          <a @click="closepanel" href="/menunew" class="item-content gray">
+          <div class="item-media"><i class="f7-icons">compose</i></div>
+          <div class="item-inner">
+           <div class="item-title">Menu</div>
+          </div>
+          </a>
+        </li>
+        <li>
+          <a @click="closepanel" href="/feedback" class="item-content gray">
           <div class="item-media"><i class="f7-icons">email</i></div>
           <div class="item-inner">
            <div class="item-title">Mesage</div>
@@ -110,6 +126,7 @@ a.button.button-fill.button-raised.pink{
 }
 .item-content.gray{
    background-color: #F5F5F5;
+   color: black;
 }
 .margin-auto{
   margin: auto;
@@ -117,13 +134,18 @@ a.button.button-fill.button-raised.pink{
 .card-content-inner.menu{
   padding: 10px !important;
 }
+.item-inner.home{
+   background-color: #F5F5F5; 
+}
 </style>
 <script>
   export default {
     methods: {
       onF7Init: function () {
         if (global.cordova) {
-          document.addEventListener('backbutton', this.$root.$f7Router.framework7.mainView.router.back, false)
+          document.addEventListener('backbutton',
+            this.$root.$f7Router.framework7.mainView.router.back,
+            alert(this.$root.$f7Router.framework7.mainView.route.url), false)
         }
       },
       closepanel: function () {

@@ -23,7 +23,11 @@
   "framework7parameters": {
     "swipePanel": "left",
     "pushState": true,
-    "animateNavBackIcon": true
+    "animateNavBackIcon": true,
+    "modalCloseByOutside": true,
+    "actionsCloseByOutside": true,
+    "popupCloseByOutside": true,
+    "materialRipple": false
   },
   "materialSubnavbarFix": true,
   "restoreHistory": true,

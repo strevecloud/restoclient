@@ -1,6 +1,26 @@
 <template>
 	<f7-page>
 		<f7-navbar title="Menu" link="/" back-link="Back" sliding/>
+<!-- 		<f7-toolbar tabbar bottom>
+		<div class="toolbar-inner">
+		<a href="#tab1" class="tab-link">
+            <i class="f7-icons">home</i>
+            <span class="tabbar-label">Home</span>
+        </a>
+        <a href="/listmenu" class="toolbar-link">
+            <i class="f7-icons">menu</i>
+            <span class="toolbar-label">List</span>
+        </a>
+        <a href="#tab2" class="tab-link">
+             <i class="f7-icons">star</i>
+            <span class="tabbar-label">Favorite</span>
+        </a>
+        <a href="/categorynew" class="toolbar-link">
+            <i class="f7-icons">book</i>
+            <span class="toolbar-label">Menu</span>
+        </a>
+    </div>
+		</f7-toolbar> -->
 	  <div class="content-block menu">
 	      <div class="row">
 	        <div class="col-50 padding-square" v-for="n in 6">

@@ -44,8 +44,16 @@
     "component": "inprogress.vue"
   },
   {
+    "path": "/listmenu/",
+    "component": "listmenu.vue"
+  },
+  {
     "path": "/menumakanan/",
     "component": "menumakanan.vue"
+  },
+  {
+    "path": "/menunew/",
+    "component": "menunew.vue"
   },
   {
     "path": "/menusquare/",

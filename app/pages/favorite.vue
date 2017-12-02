@@ -77,6 +77,8 @@ export default {
         })
         .catch(e => {
           console.log('error')
+          myApp.hideIndicator()
+          this.$f7.alert('Network Error')
         })
     },
     methods: {

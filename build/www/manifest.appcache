@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:v1.0.15
+#ver:v1.0.25
 #plugin:4.8.4
 
 CACHE:
@@ -31,10 +31,10 @@ CACHE:
 /img/order_64x64.8dc2a15.png
 /img/promo.6692a61.jpg
 /img/voucher_64x64.017dd0f.png
-/app.dafa75c.js
-/init.dafa75c.js
-/app.dafa75c.css
-/init.dafa75c.css
+/app.66ab37c.js
+/init.66ab37c.js
+/app.66ab37c.css
+/init.66ab37c.css
 /
 /offline-service-worker.js
 /manifest.json

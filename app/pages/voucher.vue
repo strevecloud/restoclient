@@ -77,6 +77,8 @@
           })
           .catch(e => {
             console.log('error')
+            myApp.hideIndicator()
+            this.$f7.alert('Network Error')
           })
         console.log(this.ready)
   
