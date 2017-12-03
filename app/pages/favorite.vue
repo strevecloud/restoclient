@@ -1,49 +1,61 @@
 <template>
   <f7-page>
   	<f7-navbar title="Favorite" link="/" back-link="Back" sliding/>
-    <div class="list-block media-list" v-for="item in data">
-    <ul>
-        <li>
-            <div class="item-content">
-                <div class="item-media">
-                    <img v-if="item.image" :src="item.image" width="70">
-                    <img v-if="!item.image" src="../images/no-image.svg" width="90">
-                </div>
-                <div class="item-inner">
-                    <div class="item-title-row">
-                        <div class="item-title">{{ item.name }}</div>
-                    </div>
-                    <div class="item-text">{{ item.time }} Minutes</div>
-                    <div class="item-text">{{ formatPrice(item.price) }}</div>
-                    <a :href="linked(item)"><label class="badge bg-green buy-item">Detail</label></a>
-                </div>
+      <div class="content-block menu">
+        <div class="row">
+          <div class="col-50 tablet-33 padding-square" v-for="item in data">
+            <a :href="linked(item)">
+            <div class="card demo-card-header-pic">
+          <div style="background-image:url('https://skounis.s3.amazonaws.com/mobile-apps/restaurant-ionic/_demonstration/assets/cat-a-1-1.png')" valign="bottom" class="square"></div>
+          <div class="card-content">
+            <div class="card-content-inner text">
+              <h3 class="single-title-menu">{{ item.name }}</h3>
+              <h4 class="single-title-menu">{{ formatPrice(item.price) }}</h4>
             </div>
-        </li>
-    </ul>
-</div>  
+          </div>
+        </div>
+        </a>
+          </div>
+        </div>
+    </div>
   </f7-page>
 </template>
 
 <style type="text/css">
-.navbar-fixed .navbar, .navbar-through .navbar{
-  box-shadow: none;
+.content-block.menu{
+  margin: 5px;
+  padding: 0px !important;
 }
-	.buy-item{
-		position: absolute;
-		top:50px;
-		right: 15px;
-		
-		bottom: 30px;
-	}
-	label.badge.bg-green.buy-item {
-    width: 60px;
-    text-align: center;
-    margin: 5px;
-    font-size: 15px;
-    height: 25px;
+.card{
+  margin: 0px !important;
 }
-.list-block.media-list{
-	margin: 5px;
+.square {
+    width: 100%;
+    padding-bottom: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.menu-pic{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-size: cover;
+  overflow: hidden;
+}
+.card-content-inner.text {
+  padding: 0px !important;
+    padding-bottom: 16px !important;
+}
+.single-title-menu{
+  font-size: 14px;
+  color: #6e6e6e;
+  font-weight: 500;
+  font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
+  margin: auto;
+  }
+ .col-50.padding-square {
+    padding: 0px !important;
+    padding-bottom: 15px !important;
 }
 </style>
 <script>
@@ -58,18 +70,13 @@ export default {
       }
     },
     created: function () {
-      // let routeparam = this.$route.params.id
-      // this.title = this.$route.params.name
       let url = CONFIG.URL + 'favorite'
       let myApp = this.$f7
       myApp.showIndicator()
-      // let urldetail = url + routeparam
       axios.get(url)
         .then(response => {
-          // JSON responses are automatically parsed.
           let res = response.data.data
           this.data = res
-          // console.log(res)
           this.ready = true
           if (this.ready) {
             myApp.hideIndicator()
@@ -83,8 +90,7 @@ export default {
     },
     methods: {
       linked: function (item) {
-        // window.f7.alert(item.id);
-        return '/detail/' + item.id + '/' + item.name
+        return '/detailmenu/' + item.id + '/' + item.name
       },
       alertclickfalse: function () {
         return this.data.id

@@ -7,7 +7,7 @@
       <li>
          <div class="item-content">
             <div class="item-inner">
-               <div class="item-title label">Code Voucher</div>
+               <!-- <div class="item-title label">Code Voucher</div> -->
                <div class="item-input">
                   <input type="text" v-model="voucher" name="name" placeholder="Code Voucher">
                </div>
@@ -18,7 +18,7 @@
          <div class="item-content">
             <div class="item-inner">
                <div class="item-input">
-                 <a href="#" @click="sendvoucher" class="button button-fill button-raised">Send</a>
+                 <a href="#" @click="sendvoucher" class="button button-fill button-raised button-pink">Send</a>
                </div>
             </div>
          </div>
@@ -42,6 +42,11 @@
     </div>
 	</f7-page>
 </template>
+<style type="text/css">
+  a.button.button-fill.button-raised.button-pink{
+     background-color: #CC0D52 !important;
+  }
+</style>
 <script>
   import axios from 'axios'
   import * as CONFIG from '../config'

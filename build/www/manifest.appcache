@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:v1.0.25
+#ver:v1.0.32
 #plugin:4.8.4
 
 CACHE:
@@ -22,19 +22,12 @@ CACHE:
 /fonts/fontawesome-webfont.af7ae50.woff2
 /fonts/fontawesome-webfont.fee66e7.woff
 /img/i-f7-material.ccc2c70.png
-/fonts/no-image.17eb9b0.svg
 /fonts/food-covered-tray-silhouette.fb219f1.svg
-/img/billing_64x64.0f31d2d.png
-/img/favorite_64x64.532a6df.png
-/img/feedback_64x64.dfbf46d.png
-/img/menu_64x64.c214cdc.png
-/img/order_64x64.8dc2a15.png
-/img/promo.6692a61.jpg
-/img/voucher_64x64.017dd0f.png
-/app.66ab37c.js
-/init.66ab37c.js
-/app.66ab37c.css
-/init.66ab37c.css
+/fonts/no-image.17eb9b0.svg
+/app.318c91d.js
+/init.318c91d.js
+/app.318c91d.css
+/init.318c91d.css
 /
 /offline-service-worker.js
 /manifest.json

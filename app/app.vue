@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <login-popup /> -->
+    <login-popup />
     <f7-views>
       <f7-view main url="/home/" navbar-through :dynamic-navbar="$theme.ios" />
     </f7-views>
@@ -20,22 +20,6 @@
     <div class="list-block">
       <ul>
         <li>
-          <a @click="closepanel" href="/menusquare" class="item-content gray">
-          <div class="item-media"><i class="f7-icons">menu</i></div>
-          <div class="item-inner">
-            <div class="item-title">Menu Square</div>
-          </div>
-        </a>
-        </li>
-        <li>
-          <a @click="closepanel" href="/listmenu" class="item-content gray">
-          <div class="item-media"><i class="f7-icons">menu</i></div>
-          <div class="item-inner">
-            <div class="item-title">Menu List</div>
-          </div>
-        </a>
-        </li>
-        <li>
           <a @click="closepanel" href="/categorynew" class="item-content gray">
           <div class="item-media"><i class="f7-icons">data</i></div>
           <div class="item-inner">
@@ -44,12 +28,36 @@
           </a>
         </li>
         <li>
-          <a @click="closepanel" href="/menunew" class="item-content gray">
-          <div class="item-media"><i class="f7-icons">compose</i></div>
+          <a @click="closepanel" href="/favorite" class="item-content gray">
+          <div class="item-media"><i class="f7-icons">star</i></div>
           <div class="item-inner">
-           <div class="item-title">Menu</div>
+           <div class="item-title">Favorite</div>
           </div>
           </a>
+        </li>
+        <li>
+          <a @click="closepanel" href="/myorder" class="item-content gray">
+          <div class="item-media"><i class="f7-icons">compose</i></div>
+          <div class="item-inner">
+           <div class="item-title">My Order</div>
+          </div>
+          </a>
+        </li>
+        <li>
+          <a @click="closepanel" href="/voucher" class="item-content gray">
+          <div class="item-media"><i class="f7-icons">ticket</i></div>
+          <div class="item-inner">
+            <div class="item-title">Voucher</div>
+          </div>
+        </a>
+        </li>
+        <li>
+          <a @click="closepanel" href="/paymentdetail" class="item-content gray">
+          <div class="item-media"><i class="f7-icons">card</i></div>
+          <div class="item-inner">
+            <div class="item-title">Biling</div>
+          </div>
+        </a>
         </li>
         <li>
           <a @click="closepanel" href="/feedback" class="item-content gray">
@@ -63,12 +71,6 @@
           <div class="item-media"><i class="f7-icons">phone</i></div>
           <div class="item-inner">
             <div class="item-title">Call Us</div>
-          </div>
-        </li>
-        <li class="item-content gray">
-          <div class="item-media"><i class="f7-icons">logout</i></div>
-          <div class="item-inner">
-            <a @click="logout" href="#" class="item-link"><div class="item-title">Sign Out</div></a>
           </div>
         </li>
       </ul>
