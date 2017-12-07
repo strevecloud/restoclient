@@ -7,9 +7,9 @@
     </f7-navbar>
     <div class="content-block home">
     <swiper :options="swiperOption">
-        <swiper-slide v-for="n in 10" style="background-image:url('https://recipeland.com/images/r/17725/ea4a1cd2d6d882ba37d2_1024.jpg');width:100vw;">
+        <swiper-slide v-for="photo in banners" :style="{ 'background-image': 'url(' + photo.banner + ')' }" width="100vw">
           <div class="item-subtitle">
-            <h3 class="judul-slide">Salmon Fillet</h3>
+            <h3 class="judul-slide">{{ photo.title }}</h3>
           </div>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
@@ -42,7 +42,8 @@
           <div class="col-50 tablet-33 padding-square" v-for="item in data.slice(0, 4)">
             <a :href="linked(item)">
             <div class="card demo-card-header-pic">
-          <div style="background-image:url('https://skounis.s3.amazonaws.com/mobile-apps/restaurant-ionic/_demonstration/assets/cat-a-1-1.png')" valign="bottom" class="square"></div>
+          <!-- <div style="background-image:url('https://skounis.s3.amazonaws.com/mobile-apps/restaurant-ionic/_demonstration/assets/cat-a-1-1.png')" valign="bottom" class="square"></div> -->
+          <div :style="{ 'background-image': 'url(' + item.photo + ')' }" valign="bottom" class="square"></div>
           <div class="card-content">
             <div class="card-content-inner text">
               <h3 class="single-title-menu">{{ item.name }}</h3>
@@ -114,7 +115,7 @@
           spaceBetween: 30,
           loop: true,
           centeredSlides: true,
-          // autoplay: 2500,
+          autoplay: 10000,
           autoplayDisableOnInteraction: false
         },
         data: [],
@@ -123,7 +124,8 @@
         cekopen: 1,
         username: null,
         password: null,
-        error: null
+        error: null,
+        banners: []
       }
     },
     created: function () {
@@ -144,6 +146,18 @@
           console.log('error')
           myApp.hideIndicator()
           this.$f7.alert('Network Error2')
+        })
+
+      let urlbanner = CONFIG.URL + 'banner/'
+      axios.get(urlbanner)
+        .then(response => {
+          this.banners = response.data.data
+          console.log(this.banners)
+        })
+        .catch(e => {
+          console.log('error')
+          myApp.hideIndicator()
+          this.$f7.alert('Network Error')
         })
     },
     methods: {

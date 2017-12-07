@@ -1,5 +1,9 @@
 [
   {
+    "path": "/call/",
+    "component": "call.vue"
+  },
+  {
     "path": "/category/",
     "component": "category.vue"
   },

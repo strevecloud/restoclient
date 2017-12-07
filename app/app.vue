@@ -9,12 +9,12 @@
 <div class="page-content">
 <div class="navbar">
 <div class="navbar-inner">
-<div class="center">Left Panel</div>
+<div class="center">Left Menu</div>
 </div>
 </div>
     <div class="content-block" style="margin:0px 0px;padding:0px 0px">
     <div class="profile">
-     <img src="./images/food-covered-tray-silhouette.svg" width="50%">
+     <img :src="logo" width="50%">
      </div>
     </div>
     <div class="list-block">
@@ -67,11 +67,13 @@
           </div>
           </a>
         </li>
-        <li class="item-content gray">
+        <li>
+          <a @click="closepanel" href="/call" class="item-content gray">
           <div class="item-media"><i class="f7-icons">phone</i></div>
           <div class="item-inner">
             <div class="item-title">Call Us</div>
           </div>
+        </a>
         </li>
       </ul>
     </div>
@@ -141,7 +143,29 @@ a.button.button-fill.button-raised.pink{
 }
 </style>
 <script>
+  import axios from 'axios'
+  import * as CONFIG from './config'
   export default {
+    data: function () {
+      return {
+        data: [],
+        logo: ''
+      }
+    },
+    created: function () {
+      let url = CONFIG.URL + 'setting'
+      axios.get(url)
+        .then(response => {
+          let res = response.data.data
+          this.data = res
+          this.logo = res[0].logo
+          console.log(res)
+        })
+        .catch(e => {
+          console.log('error')
+          this.$f7.alert('Network Error2')
+        })
+    },
     methods: {
       onF7Init: function () {
         if (global.cordova) {
@@ -156,7 +180,9 @@ a.button.button-fill.button-raised.pink{
       logout: function () {
         localStorage.setItem('cekopen', 1)
         console.log('clicked')
-        this.$f7.views.main.router.load({url: '/home/'})
+        this.$f7.views.main.router.load({
+          url: '/home/'
+        })
       }
     }
   }
