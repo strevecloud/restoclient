@@ -1,6 +1,6 @@
 {
   "name": "development",
-  "version": "1.0.32",
+  "version": "1.0.48",
   "devDependencies": {
     "app-framework": "^1.19.4"
   },

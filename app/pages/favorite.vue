@@ -6,7 +6,8 @@
           <div class="col-50 tablet-33 padding-square" v-for="item in data">
             <a :href="linked(item)">
             <div class="card demo-card-header-pic">
-          <div style="background-image:url('https://skounis.s3.amazonaws.com/mobile-apps/restaurant-ionic/_demonstration/assets/cat-a-1-1.png')" valign="bottom" class="square"></div>
+         <!--  <div style="background-image:url('https://skounis.s3.amazonaws.com/mobile-apps/restaurant-ionic/_demonstration/assets/cat-a-1-1.png')" valign="bottom" class="square"></div> -->
+          <div :style="{ 'background-image': 'url(' + item.photo + ')' }" valign="bottom" class="square"></div>
           <div class="card-content">
             <div class="card-content-inner text">
               <h3 class="single-title-menu">{{ item.name }}</h3>

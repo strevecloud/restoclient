@@ -2,12 +2,13 @@
 	<f7-page>
 	<f7-navbar :title="title" link="/" back-link="Back" sliding/>
 		<div class="card demo-card-header-pic single">
-		  <div style="background-image:url('http://rasasayange.co.id/assets/images/large_resep_85_mie%20ayam%202.jpg')" class="card-header"></div>
+		  <!-- <div style="background-image:url('http://rasasayange.co.id/assets/images/large_resep_85_mie%20ayam%202.jpg')" class="card-header"></div> -->
+      <div :style="{ 'background-image': 'url(' + imagefood + ')' }" valign="bottom" class="card-header"></div>
 		  <div class="card-content">
 		    <div class="card-content-inner single">
 		    	<div class="col-50 col-detail-menu">
 		    		<h3 class="single-title grey">{{ namefood}}</h3>
-		    		<div class="description-grey">Mi ayam atau bakmi ayam adalah masakan Indonesia yang terbuat dari mi kuning direbus mendidih kemudian ditaburi saos kecap khusus beserta daging ayam dan sayuran. Mi Ayam terkadang ditambahi dengan bakso, pangsit dan jamur.</div>
+		    		<div class="description-grey">{{ descriptionfood }}</div>
 		    		<h4 class="single-title grey">Informasi</h4>
 		    		<div class="list-block">
 				      <ul class="list-block">
@@ -108,7 +109,7 @@
          this.title = res.name
          this.namefood = res.name
          this.descriptionfood = res.description
-         this.imagefood = res.image
+         this.imagefood = res.photo
          this.pricefood = res.price
          this.timefood = res.time
          this.ready = true
@@ -147,6 +148,10 @@
        }
      },
      order: function () {
+       // var target = new Date('february 29, 2018')
+       // if (Date.now() >= target) {
+       //   window.f7.alert('Sory license has expired')
+       // } else {
        if (this.counter !== 0) {
          let url = CONFIG.URL + 'item'
          let userid = localStorage.getItem('userid')
@@ -165,6 +170,7 @@
              window.f7.alert('Sory Try Again Later')
            })
        }
+       // }
      }
    }
  }
@@ -192,13 +198,15 @@
  	font-weight: 500;
  	font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
  	color: #6e6e6e;
-  	text-align: left;
+  text-align: left;
  	margin: 5px 0 5px 0;
+  margin-left: 5px;
   }
   .description-grey{
   	color: #6e6e6e;
   	text-align: left;
   	margin: 5px 0 5px 0;
+    margin-left: 5px;
   }
   .toolbar-inner{
   	background: #CC0D52 !important;

@@ -1,5 +1,5 @@
 {
-  "title": "Restoran",
+  "title": "Restoran App",
   "defaultLanguage": "en",
   "defaultLanguageFallback": false,
   "theme": "material",
@@ -55,7 +55,9 @@
   "loginRequiredForAllPages": false,
   "appStoreId": "",
   "playStoreId": "",
-  "useCordovaPlugins": [],
+  "useCordovaPlugins": [
+    "cordova-plugin-crosswalk-webview"
+  ],
   "cordovaPreferences": {
     "DisallowOverscroll": true
   },

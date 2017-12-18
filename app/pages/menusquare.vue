@@ -26,7 +26,7 @@
 	        <div class="col-50 tablet-33 padding-square" v-for="item in data">
 	        	<div class="card demo-card-header-pic">
           <a :href="linked(item)">
-				  <div style="background-image:url('http://rasasayange.co.id/assets/images/large_resep_85_mie%20ayam%202.jpg')" valign="bottom" class="square"></div>
+          <div :style="{ 'background-image': 'url(' + item.photo + ')' }" valign="bottom" class="square"></div>
 				  <div class="card-content">
 				    <div class="card-content-inner text">
 				    	<h3 class="single-title-menu">{{ item.name }}</h3>

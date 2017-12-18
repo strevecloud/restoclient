@@ -6,7 +6,7 @@
 		      <div class="col-100 image-category">
 		      <a :href="linked(category)" class="item-link">
 		      	<div class="card demo-card-header-pic rectangle">
-				  <div s:style="{ 'background-image': 'url(' + category.background + ')' }" valign="bottom" class="card-header color-white no-border rectangle">
+				  <div :style="{ 'background-image': 'url(' + category.background + ')' }" valign="bottom" class="card-header color-white no-border rectangle">
 				  	<span class="center-title">{{ category.name }}</span>
 				  </div>
 				</div>
