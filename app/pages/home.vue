@@ -1,6 +1,6 @@
 <template>
   <f7-page v-if="cekopen==0">
-    <f7-navbar :title="$root.config.title" :dynamic-navbar="true" main>
+    <f7-navbar :title="navname" :dynamic-navbar="true" main>
       <f7-nav-right>
         <f7-link icon="icon-bars" open-panel="right"></f7-link>
       </f7-nav-right>
@@ -125,10 +125,12 @@
         username: null,
         password: null,
         error: null,
-        banners: []
+        banners: [],
+        navname: ''
       }
     },
     created: function () {
+      this.getname()
       this.cekopen = localStorage.getItem('cekopen')
       let url = CONFIG.URL + 'favorite'
       let myApp = this.$f7
@@ -152,7 +154,7 @@
       axios.get(urlbanner)
         .then(response => {
           this.banners = response.data.data
-          console.log(this.banners)
+          // console.log(this.banners)
         })
         .catch(e => {
           console.log('error')
@@ -185,7 +187,6 @@
         localStorage.setItem('cekopen', 1)
         this.cekopen = localStorage.getItem('cekopen')
         localStorage.removeItem('userid')
-        // console.log(this.cekopen)
       },
       redirect: function () {
         return this.$router.load({
@@ -201,6 +202,19 @@
       formatPrice (value) {
         let val = (value / 1).toFixed(2).replace('.', ',')
         return 'Rp ' + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+      },
+      getname: function () {
+        let url = CONFIG.URL + 'setting'
+        axios.get(url)
+          .then(response => {
+            let res = response.data.data
+            this.navname = res[0].name
+            console.log(res[0])
+          })
+          .catch(e => {
+            console.log('error')
+            this.$f7.alert('Network Error2')
+          })
       }
     }
   }

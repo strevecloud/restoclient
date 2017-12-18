@@ -9,7 +9,7 @@
 <div class="page-content">
 <div class="navbar">
 <div class="navbar-inner">
-<div class="center">Left Menu</div>
+<div class="center">{{ nameresto }}</div>
 </div>
 </div>
     <div class="content-block" style="margin:0px 0px;padding:0px 0px">
@@ -63,7 +63,7 @@
           <a @click="closepanel" href="/feedback" class="item-content gray">
           <div class="item-media"><i class="f7-icons">email</i></div>
           <div class="item-inner">
-           <div class="item-title">Mesage</div>
+           <div class="item-title">Feedback</div>
           </div>
           </a>
         </li>
@@ -90,6 +90,7 @@ div[class*="col-"]{
 }
 .profile{
   text-align: center;
+  padding: 10px;
 }
 .no-margin{
   margin: 0px;
@@ -149,7 +150,8 @@ a.button.button-fill.button-raised.pink{
     data: function () {
       return {
         data: [],
-        logo: ''
+        logo: '',
+        nameresto: ''
       }
     },
     created: function () {
@@ -159,11 +161,12 @@ a.button.button-fill.button-raised.pink{
           let res = response.data.data
           this.data = res
           this.logo = res[0].logo
-          console.log(res)
+          this.nameresto = res[0].name
+          // console.log(res[0])
         })
         .catch(e => {
-          console.log('error')
-          this.$f7.alert('Network Error2')
+          console.log(e)
+          this.$f7.alert('Network Error')
         })
     },
     methods: {
