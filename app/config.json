@@ -83,5 +83,6 @@
   "fixCodeOnBuild": true,
   "devServerPort": "8080",
   "gitignore": {},
-  "npmignore": {}
+  "npmignore": {},
+  "debug": false
 }
